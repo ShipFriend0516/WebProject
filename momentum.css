@@ -17,16 +17,13 @@ html * {
     font-family: 'pretendard';
 }
 
-body {
-    min-height: 300vh;
-    
-}
 
 p {
     font-family: 'pretendard';
 }
 
 #forSnap {
+    overflow-x:hidden;
     height: 100vh;
     overflow-y: scroll;
     scroll-snap-type: both mandatory;
@@ -193,6 +190,22 @@ p {
     }
 }
 
+#header {
+    position: sticky;
+    z-index: 2;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    height: 80px;
+    background-color: white;
+    box-shadow: 1px 1px 3px;
+    color: black;
+}
+
+
 #aboutMe {
     display: flex;
     flex-direction: column;
@@ -203,17 +216,6 @@ p {
     
 }
 
-#aboutMe header {
-    
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 100vw;
-    background-color: white;
-    box-shadow: 1px 1px 3px;
-    color: black;
-}
 
 .h1style {
     margin: 30px;
@@ -224,7 +226,8 @@ p {
     display: inline-block;
     list-style: none;
     font-size: 24px;
-    margin-left: 32px;
+    
+    padding: 16px;
 }
 
 .headerList a:visited , .headerList a{
@@ -232,9 +235,15 @@ p {
     text-decoration: none;
 }
 
+.headerList li:hover {
+    transition: 0.5s;
+    border-radius: 50px;
+    background-color: #867070;
+}
+
 .headerList a:hover {
-    transition: .5s;
-    color: gray;
+    transition: 0;
+    color: #F5EBEB;
 }
 
 /* firstContent */
