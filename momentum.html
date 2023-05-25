@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOMENTUM</title>
+<link rel="shortcut icon" href="/resource/favicon.jpg" type="image/x-icon">
+<link rel="stylesheet" href="momentum.css">
+<script src="index.js"></script>
+</head>
+<body>
+<div id="forSnap">
+<section id="intro">
+    <div class="outter">
+        <h1>나를 소개합니다.</h1>
+        <div>
+            <input class="b1" type="text">
+            <input class="b2" type="button" onclick="submit()" value="확인">
+        </div>
+        <div id="downArrow">∨</div>
+    </div>
+</section>
+<section id="aboutMe">
+    <header>
+        <h1 class="h1style">음음</h1>
+        <ul class="headerList">
+            <a href="#intro"><li>Intro</li></a>
+            <a href="#aboutMe"><li>About ME</li></a>
+            <a href="#techSection"><li>Tech Stack</li></a>
+            <a href="#futurePlanSection"><li>Future Plan</li></a>
+            <a href="#footerSection"><li>Footer</li></a>
+        </ul>
+    </header>
+    <article class="firstContent">
+        <h2 class="subtitle">About me</h2>
+        <div class="flexRow">
+            <div id="pic">
+                <div><img src="./resource/00178-470493434.png" alt=""></div>
+            </div>
+            <ul id="description">
+                <li class="page">
+                <p>이름 : 서정우</p>
+                <p>나이 : 22세</p>
+                <p>학력 : 공주대학교 소프트웨어학과 재학</p>
+                </li>
+                <li class="page">
+                <p>주제 선정 동기</p>
+                <p></p>
+                <p></p>
+                </li>
+            </ul>
+        </div>
+        <div id="galary">
+            <button id="prev" onclick="prev()"><span><</span></button>
+            <button id="next" onclick="next()"><span>></span></button>
+        </div>
+    </article>
+</section>
+<section id="techSection">
+    <h2 class="">I can do</h2>
+</section>
+<section id="futurePlanSection">
+    미래 계획 소개
+</section>
+<section id="contactSection" class="flexCol">
+    <h3>How to Contact?</h3>
+    <div class="flexRow contactFlex">
+        <div class="contactWay" id="phone"><span class="way">Phone</span></div>
+        <div class="contactWay" id="email"><span class="way">Email</span></div>
+        <div class="contactWay" id="github"><span class="way">Github</span></div>
+    </div>
+</section>
+<section id="footerSection">
+    <footer id="footer">
+        <p>© 2023 Seo-JeongWoo. All Rights Reserved.</p>
+    </footer>
+</section>
+</div>
+</body>
+</html>
