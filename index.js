@@ -1,6 +1,11 @@
 let prevBtn, nextBtn, page = 0;
-let contactWayElements;
 let pages;
+let pageBlur;
+
+let contactWayElements;
+let logoBtn;
+let searchTab;
+let description;
 
 const copyFunc = [
     function() {
@@ -19,60 +24,66 @@ window.onload = function() {
     prevBtn = document.getElementById('prev');
     nextBtn = document.getElementById('next');
     pages = document.getElementsByClassName("page");
+    description = document.getElementById('description')
+    pageBlur = document.getElementsByClassName('pageBlur');
+    logoBtn = document.getElementById('logoBtn');
+    searchTab = document.getElementById('searchTab');
 
+    pageBlur[0].style.backdropFilter = 'blur(0px)';
     // 각 .contactWay 요소에 클릭 이벤트 핸들러 추가
     
     for (let i = 0; i < 3; i++) {
         contactWayElements[i].addEventListener('click', copyFunc[i]);
     }
-    
 
+    logoBtn.addEventListener('click', showSearchTab);
 }
 
-function next() {
-    if(page!==2) {
-        page++;
-    }
-
-    switch(page) {
-        case 0:
-            pages[0].style.visibility = 'visible';
-            pages[1].style.visibility = 'collapse';
-        case 1:
-            pages[0].style.visibility = 'collapse';
-            pages[1].style.visibility = 'visible';
+function showSearchTab() {
+    if (searchTab.style.visibility === 'visible') {
+        searchTab.style.visibility = 'hidden';
+    } else {
+        searchTab.style.visibility = 'visible';
     }
 }
 
 function prev() {
-    if(page!==0) {
-        page--;
+    if(page !== 0) page--;
+    marginSet(page);
+}
+
+function next() {
+    if(page !== 4) page++;
+    marginSet(page);
+}
+
+function marginSet(page) {
+    description.style.marginLeft = 200 + (4400 - 2200*page) +'px';
+
+    for(let i=0;i<pages.length;i++) {
+        pageBlur[i].style.backdropFilter = 'blur(3px)';
     }
 
-    switch(page) {
-        case 0:
-            pages[0].style.visibility = 'collapse';
-            pages[1].style.visibility = 'visible';
-        case 1:
-            pages[0].style.visibility = 'visible';
-            pages[1].style.visibility = 'collapse';
-    }
+    pageBlur[page].style.backdropFilter = 'blur(0px)';
 }
 
 
 
-function submit() {
-    const b1 = document.querySelector(".b1");
-    const b2 = document.querySelector(".b2");
+function searchAndScroll() {
+    const searchText = document.getElementById('searchInput').value;
+    const content = document.documentElement.innerHTML;
+    const regex = new RegExp(searchText, 'gi');
+    const matches = content.match(regex);
 
-    if(b1.value && b1.value!="잘못된 입력입니다.") {
-        let url = "https://www.youtube.com/results?search_query=" + b1.value;
-        window.open(url);  
-    } else {
-        b1.value = "잘못된 입력입니다.";
+    if (matches && matches.length > 0) {
+        const firstMatch = matches[0];
+        const matchElement = document.querySelector(":contains('" + firstMatch + "')");
+        if (matchElement) {
+            matchElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
     }
-    
 }
+
 
 
 function copyText(text) {

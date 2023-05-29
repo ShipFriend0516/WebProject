@@ -14,15 +14,17 @@
 <section id="intro">
     <div class="outter">
         <h1>나를 소개합니다.</h1>
-        <div>
-            <input class="b1" type="text">
-            <input class="b2" type="button" onclick="submit()" value="확인">
-        </div>
         <div id="downArrow">∨</div>
     </div>
 </section>
 <header id="header">
-    <h1 class="h1style">Introduce</h1>
+    <div class="flexRow">
+        <img src="/resource/favicon.jpg" id="logoBtn" alt="" width="80px">
+        <span id="searchTab">
+            <input class="b1" id="searchInput" type="text">
+            <input class="b2" type="button" onclick="searchAndScroll()" value="검색">
+        </span>
+    </div>
     <ul class="headerList">
         <a href="#intro"><li>Intro</li></a>
         <a href="#aboutMe"><li>About ME</li></a>
@@ -33,35 +35,85 @@
 </header>
 <section id="aboutMe">
     <article class="firstContent">
-        <h2 class="subtitle">About me</h2>
+        <h2 class="subtitle">ABOUT ME</h2>
         <div class="flexRow">
-            <div id="pic">
-                <div><img src="./resource/00178-470493434.png" alt=""></div>
+            <div id="description">
+                <div class="page" id="page1">
+                    <div class="pageBlur"></div>
+                    <p><b>기본 정보</b></p>
+                    <p>이름 : 서정우</p>
+                    <p>나이 : 22세</p>
+                    <p>학력 : 공주대학교 소프트웨어학과 재학</p>
+                </div>
+                <div class="page" id="page2">
+                    <div class="pageBlur"></div>
+                    <p><b>주제 선정 동기와 이루고 싶은 목표</b></p>
+                    <p>제가 이루고 싶은 목표는 웹프론트엔드 엔지니어가 되는 것입니다.</p>
+                    <p>처음에 어떤 것을 할까 이것저것 해보고 있던 도중에 지인의 조언으로 웹 프론트엔드 강의를 구매하고 이후 완강까지 하게 되면서 프론트엔드에 흥미를 느끼게 되었습니다.</p>
+                </div>
+                <div class="page" id="page3">
+                    <div class="pageBlur"></div>
+                    <p><b>이러한 개발자를 꿈꾸게 된 성장 배경</b><br>
+                    저는 어렸을 때부터 IT기기를 조작하는 것을 좋아했습니다. 그러던 와중 현직 개발자인 외사촌형의 영향으로 컴퓨터 프로그래머에 대한 꿈을 조금씩 키워갔고, 중학생때 부터 C언어를 공부하는 등의 노력을 해왔습니다. <br><br>
+                    처음에는 앱 개발자가 되는 것에 관심이 많았는데, 앱과 웹 프로그래밍을 둘 다 경험해보고 나서는 웹 프로그래밍에 더 관심이 가게 되었고, 관련된 기술이나 강의들을 찾아보고 나서 웹 프론트엔드 개발자가 되고 싶다고 마을을 먹게 되었습니다.</p>
+                </div>
+                <div class="page" id="page4">
+                    <div class="pageBlur"></div>
+                    <p><b>프로젝트를 하면서 가장 어려웠던 점</b><br>
+                    어려웠던 프로젝트는 작년에 2학년 2학기에 진행했던 자바프로그래밍2 과목의 기말고사 프로젝트였습니다. 결과부터 말하면 정말 좋았습니다. 처음으로 프로젝트를 진행해보면서 많은 것을 얻을 수 있었기 때문입니다.  <br><br> 프로젝트 초반에는 어떻게 시작해야할지 감이 잘 잡히지 않았었는데 반복된 조원들과의 의사소통을 통해서 협업 능력과 의사소통 능력 그리고 프로그래밍 역량까지 고루 향상시킬 수 있었던 활동이어서 좋았습니다.</p>
+                </div>
+                <div class="page" id="page5">
+                    <div class="pageBlur"></div>
+                    <p><b>본인 역량</b><br>
+                    맡은 일을 최선을 다해서 해내는 성격이고, 유한 성격으로 사람들과 잘 섞여 지내는 성격입니다.  협업을 좋아하고 소통을 중시하는 사람이 되겠습니다.</p>
+                </div>
             </div>
-            <ul id="description">
-                <li class="page">
-                <p>이름 : 서정우</p>
-                <p>나이 : 22세</p>
-                <p>학력 : 공주대학교 소프트웨어학과 재학</p>
-                </li>
-                <li class="page">
-                <p>주제 선정 동기</p>
-                <p></p>
-                <p></p>
-                </li>
-            </ul>
         </div>
         <div id="galary">
-            <button id="prev" onclick="prev()"><span><</span></button>
-            <button id="next" onclick="next()"><span>></span></button>
+            <button id="prev" onclick="prev()"><span>이전</span></button>
+            <button id="next" onclick="next()"><span>다음</span></button>
         </div>
     </article>
 </section>
-<section id="techSection">
-    <h2 class="">I can do</h2>
+<section id="techSection" class="flexCol">
+    <div class="flexRow">
+        <h2 class="techTitle">I can do</h2>
+        <div class="techList">
+            <img src="resource/html.png" alt="" id="html" class="techImg">
+            <img src="resource/css.png" alt="" id="css" class="techImg">
+            <img src="resource/js.png" alt="" id="js" class="techImg">
+            <img src="resource/py.png" alt="" id="py" class="techImg">
+            <img src="resource/react.png" alt="" id="react" class="techImg">
+        </div>
+    </div>
+    <!-- <div class="flexRow">
+        <h2 class="techTitle">I can do too</h2>
+        <div class="techList">
+            <img src="resource/html.png" alt="" id="html" class="techImg">
+            <img src="resource/css.png" alt="" id="css" class="techImg">
+            <img src="resource/js.png" alt="" id="js" class="techImg">
+            <img src="resource/py.png" alt="" id="py" class="techImg">
+            <img src="resource/react.png" alt="" id="react" class="techImg">
+        </div>
+    </div> -->
 </section>
 <section id="futurePlanSection">
-    미래 계획 소개
+    <h2 class="futurePlanTitle">Future Plan</h2>
+    <div class="flexRow futurePlanHolder">
+        <div class="futurePlan">
+            <img src="resource/study.png" alt="">
+            <p><b>학습 계획</b><br><br> 현재는 자바스크립트 강의를 수강 중에 있습니다. <br><br> 방학 중에는 자바스크립트 강의 완강과 리액트 학습을 목표로 두고 있습니다.</p>
+        </div>
+        <div class="futurePlan">
+            <img src="resource/project.png" alt="">
+            <p><b>프로젝트 계획</b><br><br> 1학기 종강 후 방학 동안에는 개인 프로젝트와 동아리 팀 프로젝트를 병행하여 진행할 계획을 세웠습니다. <br><br> </p>
+        </div>
+        <div class="futurePlan">
+            <img src="resource/future.png" alt="">
+            <p><b>미래 계획</b><br><br> 위 과정을 거치면서 프론트엔드에 관한 이해를 완벽하게 한 뒤 저는 취업을 하고 싶습니다. <br><br></p> 
+        </div>
+    </div>
+    
 </section>
 <section id="contactSection" class="flexCol">
     <h3>How to Contact?</h3>
