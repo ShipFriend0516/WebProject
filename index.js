@@ -7,6 +7,9 @@ let logoBtn;
 let searchTab;
 let description;
 
+let canvas, ctx;
+let snowflakes = [];
+
 const copyFunc = [
     function() {
         copyText("010-9050-4371");
@@ -29,6 +32,11 @@ window.onload = function() {
     logoBtn = document.getElementById('logoBtn');
     searchTab = document.getElementById('searchTab');
 
+    canvas = document.getElementById('introCanvas');
+    ctx = canvas.getContext('2d');
+
+    setup();
+    updateTime();
     pageBlur[0].style.backdropFilter = 'blur(0px)';
     // 각 .contactWay 요소에 클릭 이벤트 핸들러 추가
     
@@ -39,6 +47,32 @@ window.onload = function() {
     logoBtn.addEventListener('click', showSearchTab);
 }
 
+function updateTime() {
+    let currentTime = new Date();
+    let hours = currentTime.getHours();
+    let minutes = currentTime.getMinutes();
+
+    // 24시간 형식으로 시간을 표시하기 위해 조건문을 사용합니다.
+    let amPm = hours >= 12 ? '오후' : '오전';
+
+    // 12시간 형식으로 변환합니다.
+    hours = hours % 12;
+    hours = hours ? hours : 12; // 0시일 경우 12로 변경합니다.
+
+    // 시간, 분, 초가 한 자리 수일 경우 앞에 0을 추가합니다.
+    hours = String(hours).padStart(2, '0');
+    minutes = String(minutes).padStart(2, '0');
+
+    let timeString = `${amPm} ${hours}시 ${minutes}분`;
+
+    // 시간을 표시할 HTML 요소를 선택하여 갱신합니다.
+    timeNowElement = document.getElementById('timeNow');
+    timeNowElement.textContent = timeString;
+}
+
+  // 1초마다 updateTime 함수를 호출하여 시간을 갱신합니다.
+setInterval(updateTime, 60000);
+
 function showSearchTab() {
     if (searchTab.style.visibility === 'visible') {
         searchTab.style.visibility = 'hidden';
@@ -46,6 +80,8 @@ function showSearchTab() {
         searchTab.style.visibility = 'visible';
     }
 }
+
+// aboutMe 섹션 버튼 이벤트
 
 function prev() {
     if(page !== 0) page--;
@@ -67,24 +103,9 @@ function marginSet(page) {
     pageBlur[page].style.backdropFilter = 'blur(0px)';
 }
 
+////////////////////////////
 
-
-function searchAndScroll() {
-    const searchText = document.getElementById('searchInput').value;
-    const content = document.documentElement.innerHTML;
-    const regex = new RegExp(searchText, 'gi');
-    const matches = content.match(regex);
-
-    if (matches && matches.length > 0) {
-        const firstMatch = matches[0];
-        const matchElement = document.querySelector(":contains('" + firstMatch + "')");
-        if (matchElement) {
-            matchElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    }
-}
-
-
+// 컨택트 복사 함수 //
 
 function copyText(text) {
     navigator.clipboard.writeText(text)
@@ -97,3 +118,61 @@ function copyText(text) {
         // 여기에 오류 처리를 위한 코드를 작성할 수 있습니다.
     });
 }
+
+////////////////////////////
+
+// canvas 이벤트
+
+function setup() {
+    canvas = document.getElementById('introCanvas');
+    if (!canvas) {
+        console.error("canvas를 찾을 수 없습니다.");
+        return;
+    }
+    ctx = canvas.getContext('2d');
+    
+    resizeCanvas();
+    createSnowflakes(100);
+    requestAnimationFrame(update);
+}
+
+window.addEventListener('resize', function() {
+    resizeCanvas();
+});
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+function createSnowflakes(num) {
+    for (let i = 0; i < num; i++) {
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+        const size = 2;
+        const speedY = Math.random() * 0.5+ 1.5;
+        
+        snowflakes.push({ x, y, size, speedY });
+    }
+}
+
+function update() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    snowflakes.forEach((snowflake) => {
+    snowflake.y += snowflake.speedY;
+    
+    ctx.beginPath();
+    ctx.arc(snowflake.x, snowflake.y, snowflake.size, 0, Math.PI * 2);
+    ctx.fillStyle = '#fff';
+    ctx.fill();
+    
+    if (snowflake.y > canvas.height) {
+        snowflake.y = 0;
+    }
+    });
+
+    requestAnimationFrame(update);
+}
+
+
