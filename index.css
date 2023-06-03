@@ -1,0 +1,614 @@
+@font-face {
+    font-family: 'TheJamsil5Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+html * {
+    margin: 0;
+    font-family: 'pretendard';
+}
+
+
+p {
+    font-family: 'pretendard';
+}
+
+#forSnap {
+    overflow-x:hidden;
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: both mandatory;
+    scroll-snap-stop: always;
+}
+
+#intro, #aboutMe, #techSection, #futurePlanSection, #footerSection, #contactSection{
+    scroll-snap-align: start;
+}
+
+
+/* 플렉스 스타일 클래스 지정 */
+.flexRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.flexCol {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#search {
+    display: flex;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.red {
+    color: red;
+}
+
+.outter {
+    flex-direction: column;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-image: url(./resource/pexels-tyler-lastovich-772803.jpg);
+}
+
+.outter h1 {
+    font-size: 80px;
+    color: white;
+    text-shadow: 1px 1px 3px black;
+}
+
+
+#intro {
+    position: relative;
+}
+
+#introCanvas {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes hovering {
+    from {
+        bottom: 8px;
+    }
+
+    to {
+        bottom:16px;
+    }
+}
+
+#downArrow {
+    position: absolute;
+    bottom: 20px;
+    font-size: 40px;
+    color: white;
+    transform: scaleX(2.5);
+    
+    animation-name: hovering;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-duration: 0.6s;
+    animation-direction: alternate;
+}
+
+
+.inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    border-radius: 10%;
+    width: 50vw;
+    height: 50vh;
+    box-shadow: 20px 20px;
+    box-shadow: inset 10px 10px 30rem rgb(0, 0, 0,0.7);
+}
+
+.outter h1:hover {
+    animation-name: titlePop;
+    animation-duration: 1s;
+}
+
+#timeNow {
+    display: block;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    font-size: 2em;
+    color: #867070;
+    font-weight: bold;
+    
+}
+
+
+@keyframes titlePop {
+    from {
+        font-size: 80px;
+    }
+
+    20% {
+        font-size: 60px;
+    }
+
+    60% {
+        font-size: 90px;
+    }
+
+    to {
+        font-size: 80px;
+    }
+}
+
+#header {
+    position: sticky;
+    z-index: 2;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    height: 80px;
+    background-color: white;
+    box-shadow: 1px 1px 3px;
+    color: black;
+}
+
+
+#aboutMe {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0,0.1);
+    
+}
+
+.b1 {
+    box-sizing: border-box;
+    width:400px;
+    line-height: 2.5em;
+    padding-left: 20px;
+    font-size: 1.2em;
+    outline: none;
+    border: 0.8px solid black;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+
+    background-color: white;
+}
+
+.b2 {
+    position: relative;
+    box-sizing: border-box;
+    line-height: 2.5em;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    border: 0.8px solid black;
+    width: 80px;
+    font-size: 1.2em;
+    margin-left: -5px;
+    background-color: #2A2F4F;
+    color: white;
+}
+
+.b2:hover::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 0.5px solid red;
+    background-color: rgb(0, 0, 0,0);
+}
+
+.b2:hover {
+    cursor: pointer;
+}
+
+#header #logoBtn:hover {
+    cursor: pointer;
+}
+
+#header #searchTab {
+    visibility: hidden;
+    margin-left: 20px;
+}
+
+.headerList li {
+    display: inline-block;
+    list-style: none;
+    font-size: 24px;
+    
+    padding: 16px;
+}
+
+.headerList a:visited , .headerList a{
+    color: black;
+    text-decoration: none;
+}
+
+.headerList li:hover {
+    transition: 0.5s;
+    border-radius: 50px;
+    background-color: #867070;
+}
+
+.headerList a:hover {
+    transition: 0;
+    color: #F5EBEB;
+}
+
+/* firstContent */
+
+.subtitle {
+    text-align: center;
+    font-size: 5em;
+    color: #2A2F4F;
+}
+
+.subtitle:hover {
+    color: rgb(0, 0, 0,0.5);
+    transition: 0.3s;
+}
+
+.firstContent {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 60px;
+    gap: 100px;
+}
+
+.firstContent #pic {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    width: 50vw;
+
+}
+
+.firstContent #pic div{
+    border-radius: 1em;
+    overflow: hidden;
+}
+
+.firstContent #description {
+    font-size: 1.5em;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.content_title:visited {
+    text-decoration: none;
+}
+
+.content {
+    color: white;
+    text-align: center;
+    aspect-ratio: 1920 / 1080;
+    /* width: 50vw; */
+}
+
+.content img {
+    aspect-ratio: 1920 / 1080;
+    width: 80%;
+}
+
+.content_title {
+    margin-top: 10px;
+    font-size: 30px;
+}
+
+#description {
+    margin-left: 4600px;
+    transition: margin-left 1s;
+}
+
+.page {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+
+    padding: 50px;
+    width: 800px;
+    border-radius: 30px;
+    color: #F5EBEB;
+    background-color: #867070;
+    margin-right: 200px;
+
+    box-shadow: 0px 3px 10px black;
+}
+
+
+.pageBlur {
+    position: absolute;
+    left: -50px;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(3px);
+}
+
+#description b {
+    font-size: 1.6em;
+}
+
+
+
+#galary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 2em;
+    gap: 20px;
+}
+
+#galary button > span {
+    font-size: 150%;
+
+}
+
+#galary button {
+    width: 200px;
+    height: 60px;
+    border-radius: 30px;
+    border: 0;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+}
+
+#galary button:hover {
+    background-color: gray;
+    color: white;
+    transition: 500ms;
+    cursor: pointer;
+    
+}
+
+
+
+
+
+/* 테크 소개 스타일 */
+
+#techSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    gap: 100px;
+}
+
+#techSection .techTitle {
+    font-size: 5em;
+}
+
+#techSection .techImg {
+    height: 200px;
+}
+
+#techSection #css, #js, #py {
+    position: relative;
+    margin-right: 30px;
+}
+
+#html {
+    position: relative;
+}
+
+#html::after  {
+    position: absolute;
+    content: 'HTML은 인프런에서 강의를 수강하고 학습하였습니다.';
+    top: 0;
+    left: 0;
+}
+
+#techList {
+    position: relative;;
+}
+
+
+/* 퓨처플랜 스타일 */
+
+#futurePlanSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0,0.1);
+
+}
+
+#futurePlanSection .futurePlanTitle {
+    font-size: 4em;
+}
+
+#futurePlanSection p {
+    font-size: 1.6em;
+}
+
+#futurePlanSection b {
+    font-size: 1.6em;
+}
+
+.futurePlan img {
+    position: absolute;
+    top: 100px;
+    width: 100px;
+    filter: invert(100%);
+}
+
+.futurePlan img:hover {
+    transition: 300ms;
+    transform: scale(1.2);
+}
+
+.futurePlan {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 20vw;
+    height: 600px;
+    padding: 30px;
+    margin: 50px;
+    color: #F5EBEB;
+    background-color: #394867;
+    border-radius: 30px;
+}
+
+.futurePlan:hover {
+    transition: .5s;
+    transform: scale(1.05);
+}
+/* 컨택트 스타일 */
+
+#contactSection h3 {
+    position: relative;
+    top: 150px;
+    font-size: 3em;
+    height: 0;
+}
+
+.contactFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: row;
+    width: 100vw;
+    height: 80vh;
+    gap: 0 100px;
+}
+
+.contactWay {
+    display: flex;
+    justify-content: center;
+    align-items: center;;
+
+    width: 20vw;
+    height: 300px;
+
+    font-family: 'pretendard';
+    font-size: 2em;
+
+    border-radius: 0.7em;
+}
+
+#phone {
+    background-color: #AEE1E1;
+}
+
+#email {
+    background-color: #D3E0DC;
+}
+
+#github {
+    background-color: #FCD1D1;
+}
+
+.contactWay {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.contactWay .way {
+    position: absolute;
+    top: calc(50%-font-size);
+    left: calc(50%-font-size);
+    transition: opacity 0.5s;
+}
+
+.contactWay:hover .way {
+    opacity: 0;
+}
+
+.contactWay::after {
+    content: "원하는 텍스트";
+    position: absolute;
+    top: calc(50%-font-size);
+    left: calc(50%-font-size);
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+#phone::after {
+    content: '010-9050-4371';
+}
+
+#email::after {
+    content: 'sjw4371@naver.com';
+}
+
+#github::after {
+    content: 'ShipFriend0516';
+}
+
+#phone:hover::after, #email:hover::after, #github:hover::after {
+    opacity: 1;
+    z-index: 1;
+}
+
+
+/* 푸터 스타일 */
+
+#footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 20vh;
+    
+    color: white;
+    background: #394867;
+}
+
+
+/* @media (min-width: 1298px) {
+    .outter {
+        transition: .5s;
+        background-image: url(./resource/Apple-September-Event-California-Streaming-BasicAppleGuy-iDownloadBlog-6K-No-Logo-1536x905.png);
+    }
+} */
