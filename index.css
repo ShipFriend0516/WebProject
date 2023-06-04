@@ -296,6 +296,16 @@ p {
     cursor: pointer;
 }
 
+#header #logoBtn {
+    width: 80px; /* 버튼의 너비 */
+    height: 80px; /* 버튼의 높이 */
+    border: 0;
+    overflow: visible;
+    background-position: center;
+    background-size: cover;
+    background-image: url(/resource/favicon.jpg);
+}
+
 #header .searchTab {
     display: none;
     margin-left: 20px;
