@@ -9,6 +9,18 @@ let description;
 
 let canvas, ctx;
 let snowflakes = [];
+let snowSlider;
+let snowAmount;
+
+const descriptions = {
+    html: "HTML에 대한 문장",
+    css: "CSS에 대한 문장",
+    js: "JavaScript에 대한 문장",
+    py: "Python에 대한 문장",
+    react: "React에 대한 문장",
+    socar: "Socar에 대한 문장",
+    naver: "Naver에 대한 문장"
+};
 
 const copyFunc = [
     function() {
@@ -30,10 +42,12 @@ window.onload = function() {
     description = document.getElementById('description')
     pageBlur = document.getElementsByClassName('pageBlur');
     logoBtn = document.getElementById('logoBtn');
-    searchTab = document.getElementById('searchTab');
+    searchTab = document.querySelectorAll('.searchTab');
 
     canvas = document.getElementById('introCanvas');
     ctx = canvas.getContext('2d');
+    
+    
 
     setup();
     updateTime();
@@ -44,7 +58,19 @@ window.onload = function() {
         contactWayElements[i].addEventListener('click', copyFunc[i]);
     }
 
-    logoBtn.addEventListener('click', showSearchTab);
+    let isSearchTabVisible = false;
+
+    logoBtn.addEventListener('click', function() {
+        searchTab.forEach(tab => {
+            if (isSearchTabVisible) {
+                tab.style.display = 'none';
+            } else {
+                tab.style.display = 'block';
+            }
+        });
+
+        isSearchTabVisible = !isSearchTabVisible;
+    });
 }
 
 function updateTime() {
@@ -103,6 +129,26 @@ function marginSet(page) {
     pageBlur[page].style.backdropFilter = 'blur(0px)';
 }
 
+/////////////////////////
+
+// 기술 클릭 이벤트 //
+
+function toggleDescription(id) {
+    const image = document.getElementById(id);
+    const description = document.createElement('div');
+    description.innerText = descriptions[id];
+    description.classList.add('description'); // 생성된 문장에 클래스 추가
+
+    if (image.nextElementSibling && image.nextElementSibling.classList.contains('description')) {
+        // 이미 문장이 나타난 상태이므로 제거합니다.
+        image.nextElementSibling.remove();
+    } else {
+        // 문장을 나타내는 요소를 생성하여 추가합니다.
+        image.parentNode.insertBefore(description, image.nextSibling);
+    }
+}
+
+
 ////////////////////////////
 
 // 컨택트 복사 함수 //
@@ -131,14 +177,21 @@ function setup() {
     }
     ctx = canvas.getContext('2d');
     
+    const snowSlider = document.getElementById('snowSlider'); // 슬라이더 요소를 가져옵니다
+    snowAmount = snowSlider.value;
+    snowSlider.addEventListener('input', function() {
+        snowAmount = snowSlider.value; // 슬라이더 값으로 snowAmount를 조정합니다
+        snowflakes= [];
+
+        if(snowAmount > snowSlider.max)
+        resizeCanvas(); // 눈의 양이 변경되었으므로 캔버스 크기를 다시 조정합니다
+        createSnowflakes(snowAmount); // 변경된 눈의 양에 따라 눈을 생성합니다
+    });
+    
     resizeCanvas();
-    createSnowflakes(100);
+    createSnowflakes(snowAmount);
     requestAnimationFrame(update);
 }
-
-window.addEventListener('resize', function() {
-    resizeCanvas();
-});
 
 function resizeCanvas() {
     canvas.width = window.innerWidth;
@@ -146,13 +199,16 @@ function resizeCanvas() {
 }
 
 function createSnowflakes(num) {
+    let maxWind = 3;
+    let minWind = 1;
+
     for (let i = 0; i < num; i++) {
         const x = Math.random() * canvas.width;
         const y = Math.random() * canvas.height;
         const size = 2;
-        const speedY = Math.random() * 0.5+ 1.5;
-        
-        snowflakes.push({ x, y, size, speedY });
+        const speedY = Math.random() * 0.5 + 1.5;
+        const windSpeed = Math.random() * maxWind + minWind;
+        snowflakes.push({ x, y, size, speedY, windSpeed });
     }
 }
 
@@ -160,16 +216,20 @@ function update() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     snowflakes.forEach((snowflake) => {
-    snowflake.y += snowflake.speedY;
-    
-    ctx.beginPath();
-    ctx.arc(snowflake.x, snowflake.y, snowflake.size, 0, Math.PI * 2);
-    ctx.fillStyle = '#fff';
-    ctx.fill();
-    
-    if (snowflake.y > canvas.height) {
-        snowflake.y = 0;
-    }
+        snowflake.y += snowflake.speedY;
+        snowflake.x += snowflake.windSpeed; // 바람의 속도를 x 좌표에 적용합니다
+        
+        ctx.beginPath();
+        ctx.arc(snowflake.x, snowflake.y, snowflake.size, 0, Math.PI * 2);
+        ctx.fillStyle = '#fff';
+        ctx.fill();
+        
+        if (snowflake.y > canvas.height) {
+            snowflake.y = 0;
+        }
+        if (snowflake.x > canvas.width) {
+            snowflake.x = 0;
+        }
     });
 
     requestAnimationFrame(update);

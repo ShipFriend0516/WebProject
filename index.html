@@ -13,20 +13,19 @@
 <div id="forSnap">
 <section id="intro">
     <div class="outter">
-        <canvas id="introCanvas"></canvas>
         <h1>Introduce Me</h1>
+        <canvas id="introCanvas"></canvas>
         <div id="downArrow">∨</div>
     </div>
-    
     <div id="timeNow">현재 시각 : 00시 00분</div>
 </section>
 <header id="header">
     <div class="flexRow">
         <img src="/resource/favicon.jpg" id="logoBtn" alt="" width="80px">
-        <span id="searchTab">
-            <input class="b1" id="searchInput" type="text">
-            <input class="b2" type="button" onclick="searchAndScroll()" value="검색">
+        <span class="searchTab">
+            <form><input type="range" name="snowflakesNum" id="snowSlider" min="0" max="2500" value="200"></form>
         </span>
+        <span class="searchTab"><audio class="winter-audio" src="/resource/audio.mp3" controls volume="0.1"></audio></span>
     </div>
     <ul class="headerList">
         <a href="#intro"><li>Intro</li></a>
@@ -52,7 +51,8 @@
                     <div class="pageBlur"></div>
                     <p><b>주제 선정 동기와 이루고 싶은 목표</b></p>
                     <p>제가 이루고 싶은 목표는 웹프론트엔드 엔지니어가 되는 것입니다.</p>
-                    <p>처음에 어떤 것을 할까 이것저것 해보고 있던 도중에 지인의 조언으로 웹 프론트엔드 강의를 구매하고 이후 완강까지 하게 되면서 프론트엔드에 흥미를 느끼게 되었습니다.</p>
+                    <p>처음에 어떤 것을 할까 이것저것 해보고 있던 도중에 지인의 조언으로 웹 프론트엔드 강의를 구매하고 이후 완강까지 하게 되면서 프론트엔드에 흥미를 느끼게 되었습니다.</p><br>
+                    <p>저는 관련 지식들을 습득하고, 많은 프로젝트를 경험한 뒤 프론트엔드 직책에 취업하고 많은 성과를 이뤄내고 싶습니다.</p>
                 </div>
                 <div class="page" id="page3">
                     <div class="pageBlur"></div>
@@ -68,7 +68,8 @@
                 <div class="page" id="page5">
                     <div class="pageBlur"></div>
                     <p><b>본인 역량</b><br>
-                    맡은 일을 최선을 다해서 해내는 성격이고, 유한 성격으로 사람들과 잘 섞여 지내는 성격입니다.  협업을 좋아하고 소통을 중시하는 사람이 되겠습니다.</p>
+                    저는 맡은 일을 최선을 다해서 열심히 수행해내는 성격입니다. 그리고 유한 성격으로, 프로젝트 팀과의 협업을 위한 좋은 커뮤니케이션 능력을 갖추고 있습니다. 요구 사항 분석, 기술 문서 작성, 코드 리뷰 등의 협업 활동에 적극적으로 참여할 수 있습니다.</p><br>
+                    <p>웹 기술의 빠른 발전에 대응하기 위해 지속적으로 새로운 도구, 기술, 트렌드에 대한 학습을 진행하는 사람이 되겠습니다.</p>
                 </div>
             </div>
         </div>
@@ -82,26 +83,23 @@
     <div class="flexRow">
         <h2 class="techTitle">I can do</h2>
         <div class="techList">
-            <img src="resource/html.png" alt="" id="html" class="techImg">
-            <img src="resource/css.png" alt="" id="css" class="techImg">
-            <img src="resource/js.png" alt="" id="js" class="techImg">
-            <img src="resource/py.png" alt="" id="py" class="techImg">
-            <img src="resource/react.png" alt="" id="react" class="techImg">
+            <img src="resource/html.png" alt="" id="html" class="techImg" onclick="toggleDescription('html')">
+            <img src="resource/css.png" alt="" id="css" class="techImg" onclick="toggleDescription('css')">
+            <img src="resource/js.png" alt="" id="js" class="techImg" onclick="toggleDescription('js')">
+            <img src="resource/py.png" alt="" id="py" class="techImg" onclick="toggleDescription('py')">
+            <img src="resource/react.png" alt="" id="react" class="techImg" onclick="toggleDescription('react')">
         </div>
     </div>
     <div class="flexRow">
         <h2 class="techTitle">And I'm Interested in</h2>
         <div class="techList">
-            <!-- <img src="resource/html.png" alt="" id="html" class="techImg">
-            <img src="resource/css.png" alt="" id="css" class="techImg">
-            <img src="resource/js.png" alt="" id="js" class="techImg">
-            <img src="resource/py.png" alt="" id="py" class="techImg">
-            <img src="resource/react.png" alt="" id="react" class="techImg"> -->
+            <img src="resource/socar.png" alt="" id="socar" class="techImg" onclick="toggleDescription('socar')">
+            <img src="resource/naver.png" alt="" id="naver" class="techImg" onclick="toggleDescription('naver')">
         </div>
     </div>
 </section>
 <section id="futurePlanSection">
-    <h2 class="futurePlanTitle">Future Plan</h2>
+    <h2 class="futurePlanTitle subtitle">Future Plan</h2>
     <div class="flexRow futurePlanHolder">
         <div class="futurePlan">
             <img src="resource/study.png" alt="">
@@ -113,7 +111,7 @@
         </div>
         <div class="futurePlan">
             <img src="resource/future.png" alt="">
-            <p><b>미래 계획</b><br><br> 위 과정을 거치면서 프론트엔드에 관한 이해를 완벽하게 한 뒤 저는 취업을 하고 싶습니다. <br><br></p> 
+            <p><b>미래 계획</b><br><br> 위 과정을 거치면서 프론트엔드에 관한 이해를 완벽하게 한 뒤 저는 프론트엔드 직업에 취업을 하고 싶습니다.<br><br></p> 
         </div>
     </div>
     
@@ -123,7 +121,7 @@
     <div class="flexRow contactFlex">
         <div class="contactWay" id="phone"><span class="way">Phone</span></div>
         <div class="contactWay" id="email"><span class="way">Email</span></div>
-        <div class="contactWay" id="github"><span class="way">Github</span></div>
+        <div class="contactWay" id="github" onclick="showGitHubProfile()"><span class="way">Github</span></div>
     </div>
 </section>
 <section id="footerSection">

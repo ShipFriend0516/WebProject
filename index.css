@@ -83,6 +83,7 @@ p {
     font-size: 80px;
     color: white;
     text-shadow: 1px 1px 3px black;
+    z-index: 3;
 }
 
 
@@ -92,9 +93,60 @@ p {
 
 #introCanvas {
     position: absolute;
-    z-index: 2;
+    z-index: 1;
     width: 100%;
     height: 100%;
+}
+
+/* 슬라이더 트랙 스타일 */
+#snowSlider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background-color: #e0e0e0;
+}
+    
+  /* 슬라이더 채워진 부분 스타일 */
+#snowSlider::-webkit-slider-runnable-track {
+    background: linear-gradient(to right, #b3daff, #7aaaff);
+    border-radius: 5px;
+}
+
+  /* 슬라이더 핸들 스타일 */
+#snowSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+  /* 슬라이더 핸들 드래그 시 스타일 */
+#snowSlider:active::-webkit-slider-thumb {
+    transform: scale(1.2);
+}
+
+  /* 슬라이더의 값 레이블 스타일 */
+#snowSlider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+  /* 슬라이더의 값 레이블 스타일 */
+#snowSlider::-moz-range-progress {
+    background: linear-gradient(to right, #b3daff, #7aaaff);
+    border-radius: 5px;
+}
+    
+  /* 슬라이더의 값 레이블 스타일 */
+#snowSlider::-ms-fill-lower {
+    background: linear-gradient(to right, #b3daff, #7aaaff);
+    border-radius: 5px;
 }
 
 @keyframes hovering {
@@ -147,7 +199,8 @@ p {
     font-size: 2em;
     color: #867070;
     font-weight: bold;
-    
+    background-color: rgb(255, 255, 255,0.5);
+    padding: 0 10px;
 }
 
 
@@ -243,9 +296,14 @@ p {
     cursor: pointer;
 }
 
-#header #searchTab {
-    visibility: hidden;
+#header .searchTab {
+    display: none;
     margin-left: 20px;
+}
+
+audio {
+    margin-top: 10px;
+    height: 30px;
 }
 
 .headerList li {
@@ -390,7 +448,7 @@ p {
 #galary button {
     width: 200px;
     height: 60px;
-    border-radius: 30px;
+    border-radius: 20px;
     border: 0;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
 }
@@ -402,7 +460,6 @@ p {
     cursor: pointer;
     
 }
-
 
 
 
@@ -431,20 +488,29 @@ p {
     margin-right: 30px;
 }
 
-#html {
+.techList {
     position: relative;
+    border-radius: 30px;
+    margin-left: 50px;
+    overflow: hidden;
+    padding: 50px;
+    box-shadow: 0px 10px 20px gray;
 }
 
-#html::after  {
-    position: absolute;
-    content: 'HTML은 인프런에서 강의를 수강하고 학습하였습니다.';
-    top: 0;
-    left: 0;
+.techList:hover {
+    transition: .5s;
+    transition-timing-function: ease-in-out;
+    margin-left: 60px;
 }
 
-#techList {
-    position: relative;;
+.description {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    
 }
+
 
 
 /* 퓨처플랜 스타일 */
@@ -473,7 +539,7 @@ p {
 }
 
 .futurePlan img {
-    position: absolute;
+    /* position: absolute; */
     top: 100px;
     width: 100px;
     filter: invert(100%);
@@ -490,8 +556,10 @@ p {
     justify-content: center;
     align-items: center;
     text-align: center;
+    flex-direction: column;
+    gap: 50px;
     width: 20vw;
-    height: 600px;
+    height: 500px;
     padding: 30px;
     margin: 50px;
     color: #F5EBEB;
@@ -507,7 +575,7 @@ p {
 
 #contactSection h3 {
     position: relative;
-    top: 150px;
+    top: 200px;
     font-size: 3em;
     height: 0;
 }
