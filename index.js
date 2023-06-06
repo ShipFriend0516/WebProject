@@ -13,15 +13,17 @@ let snowSlider;
 let snowAmount;
 
 const descriptions = {
-    html: "HTML은 지난 겨울방학 동안 인프런에서 강의를 구매하여 완강하여 완벽하게 이해했습니다.",
-    css: "CSS는 지난 겨울방학 동안 인프런에서 강의를 구매하여 완강하여 완벽하게 이해했습니다.",
+    html: "HTML은 지난 겨울방학 동안 인프런에서 강의를 구매하여 완강하여 완벽하게 이해했습니다. "+
+    "시맨틱 태그와 이미지의 alt 태그를 사용해서 사용자에게 불편함이 없는 경험을 제공하기 위해 노력하고 있습니다.",
+    css: "CSS는 지난 겨울방학 동안 인프런에서 강의를 구매하여 완강하여 완벽하게 이해했습니다. "+
+    "flex 레이아웃과 grid 레이아웃을 학습하였습니다.",
     js: "자바스크립트는 현재 학교에서 배우는 웹프로그래밍과 인프런에서 구매한 자바스크립트 강의를 병행하여 학습 중입니다.",
     py: "파이썬도 가능합니다. 파이썬으로 PyQt나 PyGui등을 이용한 다양한 GUI 프로그래밍을 해본 경험이 있습니다.",
     react: "React는 아직 잘 다루지는 못하지만, 관심을 크게 갖고 학습 계획을 갖고 있는 기술 중 하나입니다.",
     haechi: "저는 프론트엔드에 가장 큰 관심을 갖고 있지만, 다른 4차 산업혁명 시대의 다른 IT 기술에도 관심을 갖고 있습니다. 해치랩스는 블록체인을 활용하는 회사로,"+
     " 탈중앙화라는 특성을 살리고, 사용자와 블록체인 네트워크 간의 실시간 상호작용을 돕는 것에 대한 흥미가 있어 관심을 갖고 있는 기업입니다.",
     naver: "네이버에도 관심이 많습니다. 네이버는 대한민국의 IT 업계를 이끌어나가는 플랫폼 중 하나라고 생각하고, 이 곳의 일원이 된다면 정말 많은 일들을 할 수 있을 것 같다는 생각에 관심을 갖게 되었습니다.",
-bigpicture: "빅픽쳐인터랙티브 회사는 효율적인 업무환경을 위한 여러가지 툴 사용 및 이번 학기 소프트웨어공학에서 배운 애자일 개발 방법론이나 스프린트, 데일리 스크럼 등의 방법을 직접 활용하는 회사로 관심이 갔습니다. 그리고 이 회사는 E-스포츠에 관련한 서비스를 개발하는 회사이기도 해서 관심이 가는 기업입니다."
+    bigpicture: "빅픽쳐인터랙티브 회사는 효율적인 업무환경을 위한 여러가지 툴 사용 및 이번 학기 소프트웨어공학에서 배운 애자일 개발 방법론이나 스프린트, 데일리 스크럼 등의 방법을 직접 활용하는 회사로 관심이 갔습니다. 그리고 이 회사는 E-스포츠에 관련한 서비스를 개발하는 회사이기도 해서 관심이 가는 기업입니다."
 };
 
 const copyFunc = [
@@ -57,6 +59,7 @@ window.onload = function() {
     
     for (let i = 0; i < 3; i++) {
         contactWayElements[i].addEventListener('click', copyFunc[i]);
+        contactWayElements[i].addEventListener('click', () => showToast("클립보드에 복사되었습니다."));
     }
 
     let isSearchTabVisible = false;
@@ -146,21 +149,7 @@ function toggleDescription(id) {
 
 ////////////////////////////
 
-// 컨택트 복사 함수 //
 
-function copyText(text) {
-    navigator.clipboard.writeText(text)
-    .then(function() {
-        console.log('텍스트가 성공적으로 복사되었습니다.');
-        // 여기에 추가적인 동작이 필요한 경우 처리할 수 있습니다.
-    })
-    .catch(function(error) {
-        console.error('텍스트 복사 중에 오류가 발생하였습니다.', error);
-        // 여기에 오류 처리를 위한 코드를 작성할 수 있습니다.
-    });
-}
-
-////////////////////////////
 
 // canvas 이벤트
 
@@ -230,4 +219,35 @@ function update() {
     requestAnimationFrame(update);
 }
 
+// 컨택트 복사 함수 //
 
+function copyText(text) {
+    navigator.clipboard.writeText(text)
+    .then(function() {
+        console.log('텍스트가 성공적으로 복사되었습니다.');
+    })
+    .catch(function(error) {
+        console.error('텍스트 복사 중에 오류가 발생하였습니다.', error);
+    });
+}
+
+////////////////////////////
+
+// 토스트메시지 //
+
+function showToast(message) {
+    const toastContainer = document.createElement('div');
+    toastContainer.classList.add('toast');
+    toastContainer.innerText = message;
+
+    document.body.appendChild(toastContainer);
+
+    toastContainer.style.opacity = 1;
+    toastContainer.style.visibility = 'visible';
+
+    setTimeout(() => {
+        toastContainer.style.opacity = 0;
+        toastContainer.style.visibility = 'hidden';
+        toastContainer.remove();
+    }, 2000);
+}

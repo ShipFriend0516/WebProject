@@ -101,6 +101,7 @@ p {
 /* 슬라이더 트랙 스타일 */
 #snowSlider {
     -webkit-appearance: none;
+    appearance: none;
     width: 100%;
     height: 8px;
     border-radius: 5px;
@@ -499,8 +500,13 @@ audio {
 }
 
 #techSection > .flexRow {
-    justify-content: space-between;
+    justify-content:space-around;
     gap: 100px;
+    align-items: start;
+}
+
+#techSection > .flexRow > .flexCol {
+    width: 30vw;
 }
 
 .techList .flexRow {
@@ -725,6 +731,19 @@ audio {
     background: #394867;
 }
 
+.toast {
+    position: fixed;
+    bottom: 30vh;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 20px 40px;
+    border-radius: 5px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
 
 /* @media (min-width: 1298px) {
     .outter {
