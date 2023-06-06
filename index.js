@@ -13,13 +13,15 @@ let snowSlider;
 let snowAmount;
 
 const descriptions = {
-    html: "HTML에 대한 문장",
-    css: "CSS에 대한 문장",
-    js: "JavaScript에 대한 문장",
-    py: "Python에 대한 문장",
-    react: "React에 대한 문장",
-    socar: "Socar에 대한 문장",
-    naver: "Naver에 대한 문장"
+    html: "HTML은 지난 겨울방학 동안 인프런에서 강의를 구매하여 완강하여 완벽하게 이해했습니다.",
+    css: "CSS는 지난 겨울방학 동안 인프런에서 강의를 구매하여 완강하여 완벽하게 이해했습니다.",
+    js: "자바스크립트는 현재 학교에서 배우는 웹프로그래밍과 인프런에서 구매한 자바스크립트 강의를 병행하여 학습 중입니다.",
+    py: "파이썬도 가능합니다. 파이썬으로 PyQt나 PyGui등을 이용한 다양한 GUI 프로그래밍을 해본 경험이 있습니다.",
+    react: "React는 아직 잘 다루지는 못하지만, 관심을 크게 갖고 학습 계획을 갖고 있는 기술 중 하나입니다.",
+    haechi: "저는 프론트엔드에 가장 큰 관심을 갖고 있지만, 다른 4차 산업혁명 시대의 다른 IT 기술에도 관심을 갖고 있습니다. 해치랩스는 블록체인을 활용하는 회사로,"+
+    " 탈중앙화라는 특성을 살리고, 사용자와 블록체인 네트워크 간의 실시간 상호작용을 돕는 것에 대한 흥미가 있어 관심을 갖고 있는 기업입니다.",
+    naver: "네이버에도 관심이 많습니다. 네이버는 대한민국의 IT 업계를 이끌어나가는 플랫폼 중 하나라고 생각하고, 이 곳의 일원이 된다면 정말 많은 일들을 할 수 있을 것 같다는 생각에 관심을 갖게 되었습니다.",
+bigpicture: "빅픽쳐인터랙티브 회사는 효율적인 업무환경을 위한 여러가지 툴 사용 및 이번 학기 소프트웨어공학에서 배운 애자일 개발 방법론이나 스프린트, 데일리 스크럼 등의 방법을 직접 활용하는 회사로 관심이 갔습니다. 그리고 이 회사는 E-스포츠에 관련한 서비스를 개발하는 회사이기도 해서 관심이 가는 기업입니다."
 };
 
 const copyFunc = [
@@ -48,7 +50,6 @@ window.onload = function() {
     ctx = canvas.getContext('2d');
     
     
-
     setup();
     updateTime();
     pageBlur[0].style.backdropFilter = 'blur(0px)';
@@ -135,17 +136,11 @@ function marginSet(page) {
 
 function toggleDescription(id) {
     const image = document.getElementById(id);
-    const description = document.createElement('div');
-    description.innerText = descriptions[id];
-    description.classList.add('description'); // 생성된 문장에 클래스 추가
+    const toImage = document.getElementById('DescImage');
+    toImage.src = image.src;
+    const description = document.getElementById('DescText');
+    description.innerHTML = descriptions[id];
 
-    if (image.nextElementSibling && image.nextElementSibling.classList.contains('description')) {
-        // 이미 문장이 나타난 상태이므로 제거합니다.
-        image.nextElementSibling.remove();
-    } else {
-        // 문장을 나타내는 요소를 생성하여 추가합니다.
-        image.parentNode.insertBefore(description, image.nextSibling);
-    }
 }
 
 
