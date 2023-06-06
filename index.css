@@ -26,7 +26,7 @@ p {
     overflow-x:hidden;
     height: 100vh;
     overflow-y: scroll;
-    scroll-snap-type: both mandatory;
+    scroll-snap-type: both proximity;
     scroll-snap-stop: always;
 }
 
@@ -82,10 +82,38 @@ p {
 .outter h1 {
     font-size: 80px;
     color: white;
-    text-shadow: 1px 1px 3px black;
+    /* text-shadow: 1px 1px 3px black; */
     z-index: 3;
 }
 
+.animate-charcter
+{
+    /* text-transform: uppercase; */
+    background-image: linear-gradient(
+        -225deg,
+        #231557 0%,
+        #44107a 29%,
+        #ff1361 67%,
+        #fff800 100%
+    );
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 4s linear infinite;
+    display: inline-block;
+    font-size: 190px;
+}
+
+@keyframes textclip {
+    to {
+        background-position: 200% center;
+    }
+}
 
 #intro {
     position: relative;
@@ -347,6 +375,7 @@ audio {
     text-align: center;
     font-size: 5em;
     color: #2A2F4F;
+    text-shadow: 3px 3px 20px #2A2F4F;
 }
 
 .subtitle:hover {
@@ -483,11 +512,11 @@ audio {
     align-items: center;
     width: 100vw;
     height: 100vh;
-    gap: 100px;
+    gap: 80px;
 }
 
 #techSection .techTitle {
-    font-size: 4em;
+    font-size: 3em;
 }
 
 #techSection .techImg {
@@ -501,12 +530,21 @@ audio {
 
 #techSection > .flexRow {
     justify-content:space-around;
-    gap: 100px;
+    gap: 80px;
     align-items: start;
 }
 
 #techSection > .flexRow > .flexCol {
     width: 30vw;
+}
+
+#haechi, #socar {
+    border: 1px solid rgb(151, 149, 149);
+    border-radius: 50px;
+}
+
+#naver {
+    border-radius: 50px;
 }
 
 .techList .flexRow {
@@ -586,6 +624,8 @@ audio {
 
 #futurePlanSection .futurePlanTitle {
     font-size: 4em;
+    text-shadow: 3px 3px 20px #0f104e;
+
 }
 
 #futurePlanSection p {
@@ -601,6 +641,7 @@ audio {
     top: 100px;
     width: 100px;
     filter: invert(100%);
+    margin-bottom: 10px;
 }
 
 .futurePlan img:hover {
@@ -611,15 +652,17 @@ audio {
 .futurePlan {
     position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     text-align: center;
     flex-direction: column;
-    gap: 50px;
-    width: 20vw;
+    gap: 20px;
+    width: 23vw;
     height: 500px;
-    padding: 30px;
+    padding: 20px;
     margin: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
     color: #F5EBEB;
     background-color: #394867;
     border-radius: 30px;
@@ -629,13 +672,26 @@ audio {
     transition: .5s;
     transform: scale(1.05);
 }
+
+#futurePlanSection em {
+    font-style: normal;
+    text-decoration: underline;
+    
+}
+
 /* 컨택트 스타일 */
 
 #contactSection h3 {
     position: relative;
-    top: 200px;
+    top: 15vh;
     font-size: 3em;
     height: 0;
+    text-shadow: 3px 3px 20px #85afb1;
+}
+
+#contactSection h3:hover {
+    transition: 500ms;
+    color:#85afb1;
 }
 
 .contactFlex {
@@ -653,8 +709,8 @@ audio {
     justify-content: center;
     align-items: center;;
 
-    width: 20vw;
-    height: 300px;
+    width: 24vw;
+    height: 30vh;
 
     font-family: 'pretendard';
     font-size: 2em;
