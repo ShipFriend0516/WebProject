@@ -69,7 +69,7 @@
                     <div class="pageBlur"></div>
                     <p><b>본인 역량</b><br>
                     저는 맡은 일을 최선을 다해서 열심히 수행해내는 성격입니다. 그리고 유한 성격으로, 프로젝트 팀과의 협업을 위한 좋은 커뮤니케이션 능력을 갖추고 있습니다. 요구 사항 분석, 기술 문서 작성, 코드 리뷰 등의 협업 활동에 적극적으로 참여할 수 있습니다.</p><br>
-                    <p>웹 기술의 빠른 발전에 대응하기 위해 지속적으로 새로운 도구, 기술, 트렌드에 대한 학습을 진행하는 사람이 되겠습니다.</p>
+                    <p>웹 기술의 빠른 발전에 대응하기 위해 지속 적으로 새로운 도구, 기술, 트렌드에 대한 학습을 진행하는 사람이 되겠습니다.</p>
                 </div>
             </div>
         </div>
@@ -81,21 +81,28 @@
 </section>
 <section id="techSection" class="flexCol">
     <div class="flexRow">
-        <h2 class="techTitle">I can do</h2>
-        <div class="techList">
-            <img src="resource/html.png" alt="" id="html" class="techImg" onclick="toggleDescription('html')">
-            <img src="resource/css.png" alt="" id="css" class="techImg" onclick="toggleDescription('css')">
-            <img src="resource/js.png" alt="" id="js" class="techImg" onclick="toggleDescription('js')">
-            <img src="resource/py.png" alt="" id="py" class="techImg" onclick="toggleDescription('py')">
-            <img src="resource/react.png" alt="" id="react" class="techImg" onclick="toggleDescription('react')">
+        <div class="flexCol">
+            <h2 class="techTitle">I can do</h2>
+            <div class="techList">
+                <img src="resource/html.svg" alt="" id="html" class="techImg" onclick="toggleDescription('html')">
+                <img src="resource/css.svg" alt="" id="css" class="techImg" onclick="toggleDescription('css')">
+                <img src="resource/js.png" alt="" id="js" class="techImg" onclick="toggleDescription('js')">
+                <img src="resource/py.png" alt="" id="py" class="techImg" onclick="toggleDescription('py')">
+                <img src="resource/react.png" alt="" id="react" class="techImg" onclick="toggleDescription('react')">
+            </div>
+        </div>
+        <div class="flexCol">
+            <h2 class="techTitle">And I'm Interested in</h2>
+            <div class="techList">
+                <img src="resource/haechi.png" alt="" id="haechi" class="techImg" onclick="toggleDescription('haechi')">
+                <img src="resource/naver.png" alt="" id="naver" class="techImg" onclick="toggleDescription('naver')">
+                <img src="resource/bigpicture.png" alt="" id="bigpicture" class="techImg" onclick="toggleDescription('bigpicture')">
+            </div>
         </div>
     </div>
-    <div class="flexRow">
-        <h2 class="techTitle">And I'm Interested in</h2>
-        <div class="techList">
-            <img src="resource/socar.png" alt="" id="socar" class="techImg" onclick="toggleDescription('socar')">
-            <img src="resource/naver.png" alt="" id="naver" class="techImg" onclick="toggleDescription('naver')">
-        </div>
+    <div id="toDescription">
+        <img id="DescImage" src="resource/back.jpg" alt="클릭된 이미지">
+        <p id="DescText">아이콘을 클릭해주세요! 클릭하면 설명이 나옵니다.</p>
     </div>
 </section>
 <section id="futurePlanSection">
