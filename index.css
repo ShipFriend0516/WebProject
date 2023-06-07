@@ -26,7 +26,7 @@ p {
     overflow-x:hidden;
     height: 100vh;
     overflow-y: scroll;
-    scroll-snap-type: both proximity;
+    scroll-snap-type: y proximity;
     scroll-snap-stop: always;
 }
 
@@ -375,7 +375,7 @@ audio {
     text-align: center;
     font-size: 5em;
     color: #2A2F4F;
-    text-shadow: 3px 3px 20px #2A2F4F;
+    /* text-shadow: 3px 3px 20px #2A2F4F; */
 }
 
 .subtitle:hover {
@@ -435,7 +435,7 @@ audio {
 }
 
 #description {
-    margin-left: 4600px;
+    margin-left: 5700px;
     transition: margin-left 1s;
 }
 
@@ -456,6 +456,17 @@ audio {
     box-shadow: 0px 3px 10px black;
 }
 
+.shake-animation {
+    animation: shake 0.2s ease-in-out;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
 
 .pageBlur {
     position: absolute;
@@ -469,6 +480,27 @@ audio {
     font-size: 1.6em;
 }
 
+#slideHint {
+    opacity: 1;
+    color: rgb(202, 175, 175); 
+    font-size: 80%;
+    animation-name: hintBlank;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+
+}
+
+@keyframes hintBlank {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0.5;
+    }
+}
 
 
 #galary {
@@ -526,6 +558,7 @@ audio {
 
 #techSection .techImg:hover {
     cursor: pointer;
+    transform: scale(1.05);
 }
 
 #techSection > .flexRow {
@@ -564,10 +597,12 @@ audio {
 }
 
 .techList:hover {
-    transition: .5s;
-    transition-timing-function: ease-in-out;
-    margin-top: 30px;
+    transition: .2s;
+    transition-timing-function: ease;
+    box-shadow: 0px 20px 30px rgb(94, 93, 93);
 }
+
+
 
 #techSection .techList img:last-child {
     margin-bottom: 0;
@@ -624,7 +659,7 @@ audio {
 
 #futurePlanSection .futurePlanTitle {
     font-size: 4em;
-    text-shadow: 3px 3px 20px #0f104e;
+    /* text-shadow: 3px 3px 20px #0f104e; */
 
 }
 
@@ -633,13 +668,13 @@ audio {
 }
 
 #futurePlanSection b {
-    font-size: 1.6em;
+    font-size: 1.4em;
 }
 
 .futurePlan img {
     /* position: absolute; */
     top: 100px;
-    width: 100px;
+    width: 80px;
     filter: invert(100%);
     margin-bottom: 10px;
 }
@@ -658,7 +693,7 @@ audio {
     flex-direction: column;
     gap: 20px;
     width: 23vw;
-    height: 500px;
+    height: 45vh;
     padding: 20px;
     margin: 50px;
     padding-top: 50px;

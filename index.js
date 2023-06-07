@@ -19,7 +19,7 @@ const descriptions = {
     "flex 레이아웃과 grid 레이아웃을 학습하였습니다.",
     js: "자바스크립트는 현재 학교에서 배우는 웹프로그래밍과 인프런에서 구매한 자바스크립트 강의를 병행하여 학습 중입니다.",
     py: "파이썬도 가능합니다. 파이썬으로 PyQt나 PyGui등을 이용한 다양한 GUI 프로그래밍을 해본 경험이 있습니다.",
-    react: "React는 아직 잘 다루지는 못하지만, 관심을 크게 갖고 학습 계획을 갖고 있는 기술 중 하나입니다.",
+    react: "React는 아직 잘 다루지는 못하지만, 관심을 크게 갖고 학습 계획을 갖고 있는 기술 중 하나입니다. 리액트와 더불어 자바스크립트 프레임워크 중 하나인 Vue.js와 함께 학습할 계획을 세워두었습니다.",
     haechi: "저는 프론트엔드에 가장 큰 관심을 갖고 있지만, 다른 4차 산업혁명 시대의 다른 IT 기술에도 관심을 갖고 있습니다. 해치랩스는 블록체인을 활용하는 회사로,"+
     " 탈중앙화라는 특성을 살리고, 사용자와 블록체인 네트워크 간의 실시간 상호작용을 돕는 것에 대한 흥미가 있어 관심을 갖고 있는 기업입니다.",
     naver: "네이버에도 관심이 많습니다. 네이버는 대한민국의 IT 업계를 이끌어나가는 플랫폼 중 하나라고 생각하고, 이 곳의 일원이 된다면 정말 많은 일들을 할 수 있을 것 같다는 생각에 관심을 갖게 되었습니다.",
@@ -115,17 +115,34 @@ function showSearchTab() {
 // aboutMe 섹션 버튼 이벤트
 
 function prev() {
-    if(page !== 0) page--;
-    marginSet(page);
+    if (page !== 0) {
+        page--;
+        marginSet(page);
+    } else {
+        animateShakeEffect('prev');
+    }
 }
 
 function next() {
-    if(page !== 4) page++;
-    marginSet(page);
+    if (page !== 5) {
+        page++;
+        marginSet(page);
+    } else {
+        animateShakeEffect('next');
+    }
+}
+
+function animateShakeEffect(buttonId) {
+    const button = document.getElementById(buttonId);
+    button.classList.add('shake-animation');
+
+    setTimeout(() => {
+        button.classList.remove('shake-animation');
+    }, 1000);
 }
 
 function marginSet(page) {
-    description.style.marginLeft = 200 + (4400 - 2200*page) +'px';
+    description.style.marginLeft = 200 + (5500 - 2200*page) +'px';
 
     for(let i=0;i<pages.length;i++) {
         pageBlur[i].style.backdropFilter = 'blur(3px)';
